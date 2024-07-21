@@ -12,9 +12,26 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  const fs = require('fs');
 
-`;
+  fs.appendFile('README-test.md', `
+  # ${data.title}\n
+  ## Description\n
+  ${data.description}\n
+  ## Installation\n
+  ${data.install}\n
+  ## Usage\n
+  ${data.usage}\n
+  ## Contributing\n
+  ${data.contribute}\n
+  ## Tests\n
+  ${data.test}\n
+  `, (err) =>
+    err ? console.error(err) : console.log('README successfully generated')
+  );
 }
 
-module.exports = generateMarkdown;
+// export the above module functions as an object to require in index.js
+module.exports = {
+  generateMarkdown
+}
