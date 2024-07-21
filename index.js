@@ -1,5 +1,5 @@
 // This requires the local and third-party packages needed for this application
-const generateMD = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
@@ -11,17 +11,18 @@ const questions = [
     'Enter any project usage information:',
     'Enter any contribution guidelines:',
     'Enter your project test instructions:',
-    'Enter your Github username',
-    'Enter your email address',
-    'Choose a license',
+    'Enter your Github username:',
+    'Enter your email address:',
+    'Select a project license:',
 ];
 
 // This function to write README file
 const writeREADME = (data) => {
     fs.writeFile('README-test.md', '', (error) =>
         error ? console.error(error) : console.log('README file successfully created')
-);
-    generateMD.generateMarkdown(data)
+    );
+    generateMarkdown.generateMarkdown(data);
+    generateMarkdown.renderLicenseSection(data);
 };
 
 // This function initializes the app in node
@@ -72,13 +73,28 @@ function init() {
             type: "list",
             message: questions[8],
             name: "license",
-            choices: [""], // add project licenses
+            choices: [
+                "None",
+                "Apache License 2.0",
+                "GNU General Public License v3.0",
+                "MIT License",
+                "BSD 2-Clause 'Simplified' License",
+                "BSD 3-Clause 'New' or 'Revised' License",
+                "Boost Software License 1.0",
+                "Creative Commons Zero v1.0 Universal",
+                "Eclipse Public License 2.0",
+                "GNU Affero General Public License v3.0",
+                "GNU General Public License v2.0",
+                "GNU Lesser General Public License v2.1",
+                "Mozilla Public License 2.0",
+                "The Unlicense"
+            ],
         }
     ])
-    .then((answers) => {
-        writeREADME(answers);
-    }
-    );
+        .then((answers) => {
+            writeREADME(answers);
+        }
+        );
 }
 
 // Function call to initialize app
