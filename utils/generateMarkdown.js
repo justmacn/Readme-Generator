@@ -1,3 +1,6 @@
+// This requires the fs core module needed to run these functions
+const fs = require('fs');
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {}
@@ -10,14 +13,19 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
-// TODO: Create a function to generate markdown for README
+// This function populates the README with markdown from user inputs
 function generateMarkdown(data) {
-  const fs = require('fs');
-
+  // This module appends the user inputs to the README file
   fs.appendFile('README-test.md', `
-  # ${data.title}\n
+  # ${data.title.trim()}\n
   ## Description\n
   ${data.description}\n
+  ## Table of Contents\n
+  - [Installation](#installation)\n
+  - [Usage](#usage)\n
+  - [Contributing](#contributing)\n
+  - [Tests](#tests)\n
+  - [Questions](#questions)\n
   ## Installation\n
   ${data.install}\n
   ## Usage\n
@@ -26,6 +34,10 @@ function generateMarkdown(data) {
   ${data.contribute}\n
   ## Tests\n
   ${data.test}\n
+  ## Questions\n
+  #### For any additional questions you can reach me at:\n
+  - Github: [${data.username.trim()}](https://github.com/${data.username.trim()})\n
+  - Email: ${data.email.trim()}\n
   `, (err) =>
     err ? console.error(err) : console.log('README successfully generated')
   );

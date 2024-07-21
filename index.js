@@ -10,10 +10,12 @@ const questions = [
     'Enter any installation instructions:',
     'Enter any project usage information:',
     'Enter any contribution guidelines:',
-    'Enter your project test instructions:'
+    'Enter your project test instructions:',
+    'Enter your Github username',
+    'Enter your email address',
 ];
 
-// TODO: Create a function to write README file
+// This function to write README file
 const writeREADME = (data) => {
     fs.writeFile('README-test.md', '', (error) =>
         error ? console.error(error) : console.log('README file successfully created')
@@ -21,8 +23,9 @@ const writeREADME = (data) => {
     generateMD.generateMarkdown(data)
 };
 
-// TODO: Create a function to initialize app
+// This function initializes the app in node
 function init() {
+    // Runs the inquirer module to propmt user for markdown inputs
     inquirer.prompt([
         {
             type: "input",
@@ -53,10 +56,19 @@ function init() {
             type: "input",
             message: questions[5],
             name: "test",
+        },
+        {
+            type: "input",
+            message: questions[6],
+            name: "username",
+        },
+        {
+            type: "input",
+            message: questions[7],
+            name: "email",
         }
     ])
     .then((answers) => {
-        // console.log(answers);
         writeREADME(answers);
     }
     );
