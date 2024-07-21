@@ -1,5 +1,5 @@
 
-  # Test + MIT License
+  # Test  <div style="float: right;">[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)</div>
 
   ## Description
 
@@ -44,5 +44,4 @@
 
   ## License
 
-  This application is licensed under the [MIT License
-](https://opensource.org/licenses/MIT)
+  This application is licensed under the [MIT License](https://opensource.org/licenses/MIT)
