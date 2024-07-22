@@ -19,7 +19,7 @@ const questions = [
 // This function to write README file
 const writeREADME = (data) => {
     fs.writeFile('README-test.md', '', (error) =>
-        error ? console.error(error) : console.log('README file successfully created')
+        error ? console.error(generateMarkdown.changeColor('red', error)) : console.log(generateMarkdown.changeColor('yellow', 'README.md successfully created'))
     );
     generateMarkdown.generateMarkdown(data);
     generateMarkdown.renderLicenseSection(data);
@@ -91,10 +91,7 @@ function init() {
             ],
         }
     ])
-        .then((answers) => {
-            writeREADME(answers);
-        }
-        );
+        .then((answers) => writeREADME(answers));
 }
 
 // Function call to initialize app

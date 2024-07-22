@@ -1,8 +1,8 @@
-// This requires the fs core module needed to run these functions
+// Require the modules needed to run these functions
 const fs = require('fs');
+const colors = require('colors/safe')
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// This functions renders the license badge to the top of the README
 function renderLicenseBadge(license) {
   const licenses = [
       "None",
@@ -95,8 +95,7 @@ function renderLicenseBadge(license) {
   }
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// This function appends the correct license notice and link to the README
 function renderLicenseSection(license) {
   const licenses = [
     "None",
@@ -131,7 +130,8 @@ function renderLicenseSection(license) {
     "https://www.mozilla.org/en-US/MPL/2.0/", // Mozilla Public License 2.0
     "http://unlicense.org/" // The Unlicense
   ];
-  
+
+  // a switch statement to select which license 
   switch (license.license) {
     case licenses[0]:
       return '';
@@ -139,7 +139,7 @@ function renderLicenseSection(license) {
     case licenses[1]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[1]}](${licenseLinks[1]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -147,7 +147,7 @@ function renderLicenseSection(license) {
     case licenses[2]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[2]}](${licenseLinks[2]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -155,7 +155,7 @@ function renderLicenseSection(license) {
     case licenses[3]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[3]}](${licenseLinks[3]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -163,7 +163,7 @@ function renderLicenseSection(license) {
     case licenses[4]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[4]}](${licenseLinks[4]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -171,7 +171,7 @@ function renderLicenseSection(license) {
     case licenses[5]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[5]}](${licenseLinks[5]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -179,7 +179,7 @@ function renderLicenseSection(license) {
     case licenses[6]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[6]}](${licenseLinks[6]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -187,7 +187,7 @@ function renderLicenseSection(license) {
     case licenses[7]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[7]}](${licenseLinks[7]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -195,7 +195,7 @@ function renderLicenseSection(license) {
     case licenses[8]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[8]}](${licenseLinks[8]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -203,7 +203,7 @@ function renderLicenseSection(license) {
     case licenses[9]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[9]}](${licenseLinks[9]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -211,7 +211,7 @@ function renderLicenseSection(license) {
     case licenses[10]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[10]}](${licenseLinks[10]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -219,7 +219,7 @@ function renderLicenseSection(license) {
     case licenses[11]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[11]}](${licenseLinks[11]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -227,7 +227,7 @@ function renderLicenseSection(license) {
     case licenses[12]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[12]}](${licenseLinks[12]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -235,7 +235,7 @@ function renderLicenseSection(license) {
     case licenses[13]:
       fs.appendFile('README-test.md', `This application is licensed under the [${licenses[13]}](${licenseLinks[13]})`, (err) => {
         if(err) {
-          console.error(err);
+          console.error(changeColor('red', err));
         }
       });
       break;
@@ -245,6 +245,7 @@ function renderLicenseSection(license) {
 
 // This function populates the README with markdown from user inputs
 function generateMarkdown(data) {
+
   // This module appends the user inputs to the README file
   fs.appendFile('README-test.md', `
   # ${toTitleCase(data.title.trim())} ${renderLicenseBadge(data.license)}\n
@@ -271,7 +272,7 @@ function generateMarkdown(data) {
   - Email: ${data.email.trim()}\n
   ## License\n
   `, (err) =>
-    err ? console.error(err) : console.log('README successfully generated')
+    err ? console.error(changeColor('red', err)) : console.log(changeColor('green', 'README successfully generated'))
   );
 }
 
@@ -282,9 +283,27 @@ function toTitleCase(str) {
   });
 }
 
+// 
+function changeColor(color, text) {
+const col = color
+const txt = text
+
+  switch (col) {
+    case 'green':
+     return colors.green(txt);
+      
+
+    case 'yellow':
+     return colors.yellow(txt);
+
+    case 'red':
+      return colors.red(txt);
+}
+}
+
 // export the above module functions as an object to require in index.js
 module.exports = {
   generateMarkdown,
   renderLicenseSection,
-  toTitleCase
+  changeColor,
 }
