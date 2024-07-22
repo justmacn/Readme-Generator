@@ -16,17 +16,20 @@ const questions = [
     'Select a project license:',
 ];
 
-// This function to write README file
+// This expression uses the fs core module to create the README file
 const writeREADME = (data) => {
-    fs.writeFile('README-test.md', '', (error) =>
+    fs.writeFile('README-test.md', '', (error) => 
         error ? console.error(generateMarkdown.changeColor('red', error)) : console.log(generateMarkdown.changeColor('yellow', 'README.md successfully created'))
     );
+
+    // Call our appendFile functions from the generateMarkdown local module 
     generateMarkdown.generateMarkdown(data);
     generateMarkdown.renderLicenseSection(data);
 };
 
-// This function initializes the app in node
+// This function initializes the app in the command line
 function init() {
+
     // Runs the inquirer module to propmt user for markdown inputs
     inquirer.prompt([
         {
@@ -92,7 +95,7 @@ function init() {
         }
     ])
         .then((answers) => writeREADME(answers));
-}
+};
 
-// Function call to initialize app
+// This calls our initialize function
 init();
