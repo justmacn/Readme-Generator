@@ -1,4 +1,4 @@
-// This requires the local and third-party packages needed for this application
+// Requires the local and third-party packages needed for this application
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const inquirer = require('inquirer');
 const fs = require('fs');

@@ -1,4 +1,4 @@
-// Require the modules needed to run these functions
+// Requires the modules needed to run these functions
 const colors = require('colors/safe');
 const fs = require('fs');
 
