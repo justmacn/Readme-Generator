@@ -99,3 +99,11 @@ function init() {
 
 // This calls our initialize function
 init();
+
+
+
+// TODO: change filename to sample_README
+// TODO: record video of generating sample_README
+// TODO: change filename to README
+// TODO: generate project README
+// TODO: add video of usage to project README
