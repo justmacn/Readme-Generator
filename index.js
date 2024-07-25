@@ -5,20 +5,20 @@ const fs = require('fs');
 
 // An array of questions to prompt README inputs
 const questions = [
-    'Enter your project title:',
-    'Enter a project description:',
-    'Enter any installation instructions:',
-    'Enter any project usage information:',
-    'Enter any contribution guidelines:',
-    'Enter your project test instructions:',
-    'Enter your Github username:',
-    'Enter your email address:',
-    'Select a project license:',
+    generateMarkdown.changeColor('magenta','Enter your project title:'),
+    generateMarkdown.changeColor('magenta','Enter a project description:'),
+    generateMarkdown.changeColor('magenta','Enter any installation instructions:'),
+    generateMarkdown.changeColor('magenta','Enter any project usage information:'),
+    generateMarkdown.changeColor('magenta','Enter any contribution guidelines:'),
+    generateMarkdown.changeColor('magenta','Enter your project test instructions:'),
+    generateMarkdown.changeColor('magenta','Enter your Github username:'),
+    generateMarkdown.changeColor('magenta','Enter your email address:'),
+    generateMarkdown.changeColor('magenta','Select a project license:'),
 ];
 
 // This expression uses the fs core module to create the README file
 const writeREADME = (data) => {
-    fs.writeFile('README-test.md', '', (error) => 
+    fs.writeFile('README.md', '', (error) => 
         error ? console.error(generateMarkdown.changeColor('red', error)) : console.log(generateMarkdown.changeColor('yellow', 'README.md successfully created'))
     );
 
@@ -99,11 +99,3 @@ function init() {
 
 // This calls our initialize function
 init();
-
-
-
-// TODO: change filename to sample_README
-// TODO: record video of generating sample_README
-// TODO: change filename to README
-// TODO: generate project README
-// TODO: add video of usage to project README
